@@ -1,13 +1,13 @@
  FROM python:3.9.1
 
  RUN pip install pandas
- RUN pip install psycopg2
  RUN pip install  sqlalchemy
+ RUN pip list
  WORKDIR  /app
- COPY pipeline.py pipeline.py
- COPY yellow_tripdata_2021-01.csv yellow_tripdata_2021-01.csv
+ COPY ingest_data.py ingest_data.py
+ COPY green_tripdata_2019-09.csv green_tripdata_2019-09.csv
 
 
- ENTRYPOINT ["python", "pipeline.py"]
+ ENTRYPOINT ["python", "ingest_data.py"]
 
 #  pip install <package_name>==<desired version>
